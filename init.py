@@ -1,5 +1,3 @@
-tester.py
-
 # Clicker Heroes game by 
 # 1/22/20
 '''
