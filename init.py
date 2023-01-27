@@ -389,10 +389,15 @@ def new_game():
     options_red_btn = Button(BTN_INFO['options red btn'])
     # starting screen
     screen = SCREENS['start_menu']
+
     # removes the mobs from previous games
-    mob_list.clear()
+    if len(mob_list) > 0:
+        mob_list.clear()
+        
     # removes helpers from previous games
-    helper_list.clear()
+    if len(helper_list) > 0:
+        helper_list.clear()
+        
     # stops old powerups
     z_x_spam_timer.stop()
     word_checker_timer.stop()
@@ -550,8 +555,8 @@ def z_x_powerup():
     else:
         powerups['z_x_spam'] = False
 
+global word_checker_start
 def word_checker_powerup():
-    global word_checker_start
     word_checker_start = time()
     if not powerups['word_checker']:
         word_checker_timer.start()
@@ -805,7 +810,7 @@ class Mob:
             size = [200,200]
             if self.name == 'Tiamat':
                 size = [400,300]
-            canvas.draw_image(*draw_sprite(self.img, self.time, self.col), self.pos, size)
+            canvas.draw_image(draw_sprite(self.img, self.time, self.col), self.pos, size)
         else:
             canvas.draw_image(self.img, [m_width/2, m_height/2], [m_width, m_height], self.pos, [130,130])
         # for testing hitboxes, delete later
@@ -1045,7 +1050,10 @@ def draw(canvas):
                 kill_mob(mob)
                 # damage numbers from previous mob wont appear
                 mob_hit_count = 0
-                hit_numbers.clear()
+
+                # if len(hit_numbers) > 0:
+                #     hit_numbers.clear()
+                    
                 player_values['mob_kills'] += 1
                 check_area()
                 spawn_timer.start()
@@ -1317,7 +1325,10 @@ def mouse_click(position):
             typing_checkbox_on_btn.is_active = False
             typing_checkbox_off_btn.is_active = True
             MINIGAMES['typing'] = False
-            typing_list.clear()
+
+            if len(typing_list) > 0:
+                typing_list.clear()
+                
             return
         elif sound_checkbox_off_btn.is_selected(position) and sound_checkbox_off_btn.is_active:
             sound_checkbox_off_btn.is_active = False
