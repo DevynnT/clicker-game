@@ -1,6 +1,6 @@
 # clicker-game
 
-Game made in Python using CodeSkultptor 2.0 for my Programming 11 class in high school. Game was originally made in November 2019.
+Game made in Python using CodeSkulptor 2.0 for my Programming 11 class in high school. Game was originally made in November 2019.
 
 ## How to Run
 
